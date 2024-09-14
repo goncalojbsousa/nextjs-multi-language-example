@@ -79,4 +79,4 @@ export default function HomePage() {
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
+This project is licensed under Unlicense (or 0BSD). This means that you can copy, modify, distribute and use the code for any purpose, without any obligation of attribution or any other restriction.
