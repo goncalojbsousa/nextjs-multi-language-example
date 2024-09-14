@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## About
 
-## Getting Started
+This is an example of a NextJS application with multiple language support using INTL.
 
-First, run the development server:
+### Features
+
+- Automatic system-based language selection.
+- Manual language switching.
+
+## Running locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/goncalojbsousa/nextjs-multi-language-example.git
+```
+
+Enter the project directory
+
+```bash
+  cd nextjs-multi-language-example
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to use
+### Adding translations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+In the `messages` directory, add JSON files with the translations.
 
-## Learn More
+Example translation file (`en.json` or `pt.json`):
 
-To learn more about Next.js, take a look at the following resources:
+```json
+{
+    "HomePage": {
+        "title": "Hello world!",
+        "about": "Go to the about page"
+    },
+    "AboutPage": {
+        "title": "About",
+        "home" : "Go back to home page"
+    }
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Using translations in the code
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Import and use the translations in your components:
 
-## Deploy on Vercel
+```jsx
+export default function HomePage() {
+  const t = useTranslations('HomePage');
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  return (
+    <div className='flex justify-center items-center h-screen'>
+      <main>
+        <div className='flex mb-6 items-center gap-4'>
+          <h1>{t('title')}</h1>
+          <Link href="/about">{t('about')}</Link>
+        </div>
+        <LanguageToggle />
+      </main>
+    </div>
+  );
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
